@@ -1,0 +1,107 @@
+@charset "UTF-8";
+
+
+/* Circle CSS */
+.circle {
+    border-radius: 50%;
+    position: absolute;
+}
+
+.circle_size_medium {
+    width: 70px;
+    height: 70px;
+}
+
+.circle_color_royalblue {
+    background-color: royalblue;
+}
+
+.circle_color_navy {
+    background-color: navy;
+}
+
+.circle_color_blue {
+    background-color: blue;
+}
+
+.circle_color_dodgerblue {
+    background-color: dodgerblue;
+}
+
+.circle_color_deepskyblue {
+    background-color: deepskyblue;
+}
+
+.circle_color_seagreen {
+    background-color: seagreen;
+}
+
+.circle_color_mediumaquamarine {
+    background-color: mediumaquamarine;
+}
+.circle_color_palegreen {
+    background-color: palegreen;
+}
+
+.circle_color_lightgreen {
+    background-color: lightgreen;
+}
+
+.circle_color_mediumspringgreen {
+    background-color: mediumspringgreen;
+}
+.circle_color_khaki {
+    background-color: khaki;
+}
+
+.circle_color_gold{
+    background-color: gold;
+}
+
+.circle_color_darkorange {
+    background-color: darkorange;
+}
+
+.circle_color_goldenrod {
+    background-color: goldenrod;
+}
+
+.circle_color_darkgoldenrod {
+    background-color: darkgoldenrod;
+}
+.circle_color_deeppink {
+    background-color: deeppink;
+}
+
+.circle_color_palevioletred {
+    background-color: palevioletred;
+}
+
+.circle_color_pink {
+    background-color: pink;
+}
+
+.circle_color_magenta {
+    background-color: magenta;
+}
+
+.circle_color_violet {
+    background-color: violet;
+}
+
+.circle_color_disappear {
+    background-color: white;
+    transition: 2.0s;
+}
+
+.counter_text_disappear {
+    visibility: hidden;
+    transition: 1.0s;
+}
+
+.center_position {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+}

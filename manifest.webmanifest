@@ -1,0 +1,8 @@
+{
+  "name": "Start Player",
+  "short_name": "Start Player",
+  "start_url": ".",
+  "display": "minimal-ui",
+  "background_color": "#fff",
+  "description": "スタートプレイヤー決め"
+}
