@@ -16,11 +16,11 @@ class MinimumCircle {
     }
 
     setRandomLeftPotion() {
-       this.left_potion = CalculateRandom.exec(15, (window.innerWidth - 15));
+       this.left_potion = CalculateRandom.exec(40, (window.innerWidth - 40));
     }
 
     setRandomTopPotion() {
-        this.top_potion = CalculateRandom.exec(15, (window.innerHeight - 15));
+        this.top_potion = CalculateRandom.exec(40, (window.innerHeight - 40));
     }
 }
 
