@@ -173,7 +173,9 @@ class NumberOfPlayersForm {
             let optionElement = document.createElement("option");
             optionElement.value = option_data.toString();
             optionElement.text = option_data.toString();
-            if (circleCount == option_data) optionElement.selected;
+            if (circleCount == option_data){
+                optionElement.selected = true;
+            }
             selectElement.appendChild(optionElement);
         }
         document.getElementById("app").appendChild(selectElement);
