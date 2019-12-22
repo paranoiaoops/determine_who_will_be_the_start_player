@@ -16,11 +16,11 @@ class MinimumCircle {
     }
 
     setRandomLeftPotion() {
-       this.left_potion = CalculateRandom.exec(40, (window.innerWidth - 40));
+       this.left_potion = CalculateRandom.exec(70, (window.innerWidth - 70));
     }
 
     setRandomTopPotion() {
-        this.top_potion = CalculateRandom.exec(40, (window.innerHeight - 40));
+        this.top_potion = CalculateRandom.exec(70, (window.innerHeight - 70));
     }
 }
 
@@ -154,6 +154,9 @@ class NumberOfPlayersForm {
     }
 
     create(){
+        let divElement = document.createElement("div");
+        divElement.innerText = "参加人数を選んでスタートを押してください。";
+        document.getElementById("app").appendChild(divElement);
         let selectElement = document.createElement("select");
         selectElement.id = "number_of_player";
         let windows_size = window.innerHeight * window.innerWidth;
@@ -169,24 +172,19 @@ class NumberOfPlayersForm {
             let optionElement = document.createElement("option");
             optionElement.value = option_data.toString();
             optionElement.text = option_data.toString();
+            if (circleCount == option_data) optionElement.selected;
             selectElement.appendChild(optionElement);
         }
         document.getElementById("app").appendChild(selectElement);
         let buttonElement = document.createElement("button");
         buttonElement.innerHTML = "スタート";
         buttonElement.addEventListener("click", function () {
-            let circle_count = document.getElementById("number_of_player").value;
+            circleCount = document.getElementById("number_of_player").value;
             new removeElement();
-            let color_management = new GenerateColorObject().exec(new ColorList(circle_count));
+            let color_management = new GenerateColorObject().exec(new ColorList(circleCount));
             color_management.deploy();
             let timer = new Timer();
             timer.timerStart(color_management);
-            // setTimeout(
-            //     function () {
-            //         color_management.finish()
-            //     },
-            //     1000
-            // );
         });
         document.getElementById("app").appendChild(buttonElement);
     }
@@ -202,9 +200,13 @@ class removeElement{
         while (element.firstChild) {
             element.removeChild(element.firstChild);
         }
-        let circleElement = document.getElementsByClassName("circle");
-        if (circleElement.length > 0) {
-            circleElement.remove();
+        let circleElements = document.getElementsByClassName("circle");
+        if (circleElements.length > 0) {
+            let remove_list = [];
+            for (let element of circleElements) {
+                remove_list.push(element.id);
+            }
+            remove_list.forEach(id => document.getElementById(id).remove());
         }
     }
 }
@@ -240,15 +242,30 @@ class Timer{
         countElement.innerText = timerUtility.counter;
         if (timerUtility.subtract()){
             clearInterval(timerUtility.intervalId);
-            countElement.className = "counter_text counter_text_disappear";
+            countElement.className = "counter_text top_element counter_text_disappear";
             callbackClass.finish();
+            let descriptionElement = document.getElementById("description_text");
+            descriptionElement.innerText = "残った色の人が１番です！";
+            let buttonElement = document.createElement("button");
+            buttonElement.innerText = "もう一度";
+            buttonElement.addEventListener("click", function () {
+                timerUtility.setCounter(5);
+                new removeElement();
+                new NumberOfPlayersForm().create();
+            });
+            descriptionElement.appendChild(buttonElement);
         }
     }
 
     setupDisplay()
     {
+        let textElement = document.createElement("div");
+        textElement.innerText = "！好きな色を指差せ！";
+        textElement.className = "top_element";
+        textElement.id = "description_text";
+        document.getElementById("app").appendChild(textElement);
         let countElement = document.createElement("div");
-        countElement.className = "counter_text";
+        countElement.className = "counter_text top_element";
         countElement.innerText = timerUtility.counter;
         countElement.id = "counter_text";
         document.getElementById("app").appendChild(countElement);
@@ -278,6 +295,7 @@ class WindowController {
 // グローバルで管理するため
 let timerUtility = new TimerUtility();
 timerUtility.setCounter(5);
+let circleCount = 0;
 
 window.onload = function () {
     // let color_management = new GenerateColorObject().exec(new ColorList(9));

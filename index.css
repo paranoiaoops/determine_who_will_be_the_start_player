@@ -103,5 +103,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 50%;
+    padding-top: 49%;
+}
+
+.counter_text {
+    font-size: 70px;
+}
+
+.top_element {
+    z-index: 10;
 }
