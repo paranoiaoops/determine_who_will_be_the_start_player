@@ -5,12 +5,12 @@ class CalculateRandom {
 }
 
 class MinimumCircle {
-    color_class = "";
-    left_potion = 0;
-    top_potion = 0;
-    circle_sizes_class = "";
 
     constructor() {
+        this.color_class = "";
+        this.left_potion = 0;
+        this.top_potion = 0;
+        this.circle_sizes_class = "";
         this.setRandomTopPotion();
         this.setRandomLeftPotion();
     }
@@ -25,34 +25,33 @@ class MinimumCircle {
 }
 
 class ColorList {
-    list = [
-        // Blue
-        "royalblue",
-        "navy",
-        "blue",
-        "dodgerblue",
-        "deepskyblue",
-        // Green
-        "seagreen",
-        "mediumaquamarine",
-        "palegreen",
-        "lightgreen",
-        "mediumspringgreen",
-        // Yellow
-        "khaki",
-        "gold",
-        "darkorange",
-        "goldenrod",
-        "darkgoldenrod",
-        // Red
-        "deeppink",
-        "palevioletred",
-        "pink",
-        "magenta",
-        "violet"
-    ];
-
     constructor(circleCount) {
+        this.list = [
+            // Blue
+            "royalblue",
+            "navy",
+            "blue",
+            "dodgerblue",
+            "deepskyblue",
+            // Green
+            "seagreen",
+            "mediumaquamarine",
+            "palegreen",
+            "lightgreen",
+            "mediumspringgreen",
+            // Yellow
+            "khaki",
+            "gold",
+            "darkorange",
+            "goldenrod",
+            "darkgoldenrod",
+            // Red
+            "deeppink",
+            "palevioletred",
+            "pink",
+            "magenta",
+            "violet"
+        ];
         this.setRandomList(circleCount);
     }
 
@@ -71,7 +70,10 @@ class ColorList {
 }
 
 class CircleManagement {
-    colors = [];
+
+    constructor() {
+        this.colors = [];
+    }
 
     deploy() {
         this.potionSetUp();
@@ -208,10 +210,9 @@ class removeElement{
 }
 
 class TimerUtility {
-    counter;
-    intervalId;
     setCounter(counter) {
         this.counter = counter;
+        this.intervalId  = "";
     }
     subtract(){
         this.counter = this.counter - 1;
