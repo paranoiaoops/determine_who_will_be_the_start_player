@@ -156,6 +156,7 @@ class NumberOfPlayersForm {
     create(){
         let divElement = document.createElement("div");
         divElement.innerText = "参加人数を選んでスタートを押してください。";
+        divElement.className = "top_element";
         document.getElementById("app").appendChild(divElement);
         let selectElement = document.createElement("select");
         selectElement.id = "number_of_player";
