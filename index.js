@@ -313,7 +313,7 @@ window.onload = function () {
 };
 
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./service-worker.js', )
+    navigator.serviceWorker.register('./service-worker.js')
         .then(function(reg) {
             console.log('登録に成功しました。 Scope は ' + reg.scope);
         }).catch(function(error) {
