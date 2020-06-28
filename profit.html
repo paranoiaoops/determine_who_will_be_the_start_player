@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <title>利益計算</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="manifest" href="manifest.webmanifest">
+</head>
+<body>
+    <div>
+        <div>残りターン</div>
+        <input type="radio" name="turn" value="1" checked onchange="f();"> 1
+        <input type="radio" name="turn" value="2" onchange="f();"> 2
+        <input type="radio" name="turn" value="3" onchange="f();"> 3
+        <input type="radio" name="turn" value="4" onchange="f();"> 4
+        <input type="radio" name="turn" value="5" onchange="f();"> 5
+        <input type="radio" name="turn" value="6" onchange="f();"> 6
+        <input type="radio" name="turn" value="7" onchange="f();"> 7
+        <input type="radio" name="turn" value="8" onchange="f();"> 8
+    </div>
+    <div>
+        <div>
+            <span>利益：<input type="number" id="profit_1" min="1" onchange="f();" value="1"></span>
+            <span>人数：<input type="number" id="member_1" min="1" onchange="f();" value="1"></span>
+            <span id="cal_1"></span>
+        </div>
+        <div>
+            <span>利益：<input type="number" id="profit_2" min="1" onchange="f();"  value="1"></span>
+            <span>人数：<input type="number" id="member_2" min="1" onchange="f();" value="1"></span>
+            <span id="cal_2"></span>
+        </div>
+        <div>
+            <span>利益：<input type="number" id="profit_3" min="1" onchange="f();" value="1"></span>
+            <span>人数：<input type="number" id="member_3" min="1" onchange="f();" value="1"></span>
+            <span id="cal_3"></span>
+        </div>
+        <div>
+            <span>利益：<input type="number" id="profit_4" min="1" onchange="f();" value="1"></span>
+            <span>人数：<input type="number" id="member_4" min="1" onchange="f();" value="1"></span>
+            <span id="cal_4"></span>
+        </div>
+        <div>
+            <span>利益：<input type="number" id="profit_5" min="1" onchange="f();" value="1"></span>
+            <span>人数：<input type="number" id="member_5" min="1" onchange="f();" value="1"></span>
+            <span id="cal_5"></span>
+        </div>
+    </div>
+</body>
+<script>
+    function f() {
+        let data = get();
+        for (let step = 1; step < 6; step++) {
+            document.getElementById("cal_" + step).innerText = "結果：" + cal(data[step][0], data[step][1], data[step][2]);
+        }
+    }
+
+    function clickBtn2(){
+        let str = "";
+        const color2 = document.getElementsByName("turn");
+
+        for (let i = 0; i < color2.length; i++){
+            if(color2[i].checked){ //(color2[i].checked === true)と同じ
+                str = color2[i].value;
+                break;
+            }
+        }
+        return str;
+    }
+
+    function get() {
+        let tmp = new Array;
+        tmp[1] = [
+            check(clickBtn2())
+            ,check(document.getElementById("profit_1").value)
+            ,check(document.getElementById("member_1").value)
+        ];
+        tmp[2] = [
+            check(clickBtn2())
+            ,check(document.getElementById("profit_2").value)
+            ,check(document.getElementById("member_2").value)
+        ];
+        tmp[3] = [
+            check(clickBtn2())
+            ,check(document.getElementById("profit_3").value)
+            ,check(document.getElementById("member_3").value)
+        ];
+        tmp[4] = [
+            check(clickBtn2())
+            ,check(document.getElementById("profit_4").value)
+            ,check(document.getElementById("member_4").value)
+        ];
+        tmp[5] = [
+            check(clickBtn2())
+            ,check(document.getElementById("profit_5").value)
+            ,check(document.getElementById("member_5").value)
+        ];
+        return tmp;
+    }
+
+    function check(x) {
+        if (x == undefined) return 0;
+        return x;
+    }
+
+    function cal(x, y, z) {
+        return (x * y) / z;
+    }
+</script>
+</html>
